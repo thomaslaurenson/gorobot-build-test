@@ -23,9 +23,13 @@ jobs:
       - name: Check Go version
         run: go version
 
-      - name: Install dependencies
+      - name: Install golang dependencies
         run: |
           go get -u github.com/go-vgo/robotgo
+
+      - name: Install robotgo dependencies
+        run: |
+          sudo apt-get install -y libx11-dev xorg-dev libxtst-dev
 
       - name: Build on linux
         run: |
