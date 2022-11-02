@@ -29,7 +29,7 @@ jobs:
 
       - name: Install robotgo dependencies
         run: |
-          sudo apt-get install -y xcb libxcb-xkb-dev x11-xkb-utils libx11-xcb-dev libxkbcommon-x11-dev libxkbcommon-dev
+          sudo apt-get install -y libx11-dev xorg-dev libxtst-dev xcb libxcb-xkb-dev x11-xkb-utils libx11-xcb-dev libxkbcommon-x11-dev libxkbcommon-dev
 
       - name: Build on linux
         run: |
