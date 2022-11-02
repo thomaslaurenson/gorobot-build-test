@@ -29,7 +29,7 @@ jobs:
 
       - name: Install robotgo dependencies
         run: |
-          sudo apt-get install -y libx11-dev xorg-dev libxtst-dev
+          sudo apt-get install -y gcc libc6-dev
 
       - name: Build on linux
         run: |
