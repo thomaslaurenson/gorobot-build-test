@@ -6,8 +6,8 @@ import (
 	"github.com/go-vgo/robotgo"
 )
 
-var Version = "undefined"
-var CommitHash = "undefined"
+var Version = "Version"
+var CommitHash = "CommitHash"
 
 func main() {
 	fmt.Println("START")
