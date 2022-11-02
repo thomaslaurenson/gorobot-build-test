@@ -1,36 +1,11 @@
 
-name: GitHub Actions Demo
+# name: Build and Release All Targets
 
-on:
-  push:
-    branches:
-      master
+# on:
+#   push:
+#     branches:
+#       master
 
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Check out repository code
-        uses: actions/checkout@v3
-
-      - name: Setup Go environment
-        uses: actions/setup-go@v3
-        with:
-          go-version: '1.19'
-          check-latest: true
-          cache: true
-
-      - name: Check Go version
-        run: go version
-
-      - name: Install golang dependencies
-        run: |
-          go get .
-
-      - name: Install robotgo dependencies
-        run: |
-          sudo apt-get install -y libx11-dev xorg-dev libxtst-dev xcb libxcb-xkb-dev x11-xkb-utils libx11-xcb-dev libxkbcommon-x11-dev libxkbcommon-dev
-
-      - name: Build on linux
-        run: |
-          GOARCH=amd64 GOOS=linux go build -x ./
+# jobs:
+#   build_and_release_linux:
+#     uses: ./.github/workflows/build_and_release_linux.yml
