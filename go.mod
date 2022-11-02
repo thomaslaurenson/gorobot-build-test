@@ -2,7 +2,7 @@ module github.com/thomaslaurenson/gorobot-build-test
 
 go 1.19
 
-require github.com/go-vgo/robotgo v0.100.10
+require github.com/go-vgo/robotgo v1.0.0-beta5.3
 
 require (
 	github.com/go-ole/go-ole v1.2.6 // indirect
