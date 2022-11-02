@@ -27,10 +27,6 @@ jobs:
         run: |
           go get .
 
-      - name: Run unit tests
-        run: |
-          go test -v
-
       - name: Install robotgo dependencies
         run: |
           sudo apt-get install -y libx11-dev xorg-dev libxtst-dev xcb libxcb-xkb-dev x11-xkb-utils libx11-xcb-dev libxkbcommon-x11-dev libxkbcommon-dev
@@ -38,6 +34,10 @@ jobs:
       - name: Install robotgo cross-compile dependencies
         run: |
           sudo apt-get install -y gcc-multilib gcc-mingw-w64 libz-mingw-w64-dev
+
+      - name: Run unit tests
+        run: |
+          go test -v
 
       - name: Build on linux
         run: |
