@@ -25,7 +25,7 @@ jobs:
 
       - name: Install golang dependencies
         run: |
-          go get -u github.com/go-vgo/robotgo
+          go get .
 
       - name: Install robotgo dependencies
         run: |
