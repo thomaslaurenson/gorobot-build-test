@@ -41,7 +41,7 @@ jobs:
 
       - name: Build on linux
         run: |
-          GOARCH=amd64 GOOS=linux go build gorobot-build-test .
+          GOARCH=amd64 GOOS=linux go build -o gorobot-build-test .
           
       - name: Cross-compile for Windows
         run: |
