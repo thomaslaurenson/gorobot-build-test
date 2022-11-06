@@ -15,5 +15,4 @@ func main() {
 	robotgo.TypeStr("Hello World")
 	robotgo.KeyTap("enter")
 	fmt.Println("END")
-	fmt.Println("END")
 }

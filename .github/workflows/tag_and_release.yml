@@ -3,8 +3,8 @@ name: Build and Release Linux
 
 on:
   push:
-    branches:
-      master
+    # branches:
+    #   master
     tags:
       - "v*.*.*"
 
@@ -31,31 +31,27 @@ jobs:
 
       - name: Install robotgo dependencies
         run: |
-          sudo apt-get install -y libx11-dev xorg-dev libxtst-dev xcb libxcb-xkb-dev x11-xkb-utils libx11-xcb-dev libxkbcommon-x11-dev libxkbcommon-dev
+          make install_linux_deps
         
-      - name: Install robotgo cross-compile dependencies
-        run: |
-          sudo apt-get install -y gcc-multilib gcc-mingw-w64 libz-mingw-w64-dev
-
       - name: Run unit tests
         run: |
-          go test -v
+          make test
 
       - name: Build on linux
         run: |
-          GOARCH=amd64 GOOS=linux go build -o gorobot-build-test .
+          make build_linux
           
       - name: Cross-compile for Windows
         run: |
-          GOARCH=amd64 GOOS=windows CGO_ENABLED=1 CC=x86_64-w64-mingw32-gcc CXX=x86_64-w64-mingw32-g++ go build -o gorobot-build-test.exe .
+          make build_windows
 
       - name: Release package
         uses: softprops/action-gh-release@v1
         if: startsWith(github.ref, 'refs/tags/')
         with:
           files: |
-            gorobot-build-test
-            gorobot-build-test.exe
+            gorobot-build-test-linux
+            gorobot-build-test-windows.exe
             LICENSE
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
