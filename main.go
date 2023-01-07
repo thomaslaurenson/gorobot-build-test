@@ -6,12 +6,11 @@ import (
 	"github.com/go-vgo/robotgo"
 )
 
-var Version = "Version"
-var CommitHash = "CommitHash"
+var Version = "dev"
+var Hash = "mode"
 
 func main() {
-	fmt.Println("START")
-	fmt.Println(Version, CommitHash)
+	fmt.Printf("[*] robotgo-build-test %s-%s\n", Version, Hash)
 	robotgo.TypeStr("Hello World")
 	robotgo.KeyTap("enter")
 	fmt.Println("END")

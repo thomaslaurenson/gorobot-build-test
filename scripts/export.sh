@@ -1,8 +1,11 @@
 #!/bin/bash
 
 
-BINARY_PREFIX="gorobot-build-test"
-PROJECT_VERSION="v2.1.0"
+BINARY_PREFIX="robotgo-build-test"
+MAJOR="2"
+MINOR="1"
+PATCH="0"
+PROJECT_VERSION="v$MAJOR.$MINOR.$PATCH"
 COMMIT_HASH=$(git rev-parse HEAD)
 
 export BINARY_PREFIX
