@@ -1,4 +1,4 @@
-module github.com/thomaslaurenson/gorobot-build-test
+module github.com/thomaslaurenson/robotgo-build-test
 
 go 1.19
 

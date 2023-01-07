@@ -1,15 +1,12 @@
-
-name: Build and Release Linux
+name: Build and Release
 
 on:
   push:
-    # branches:
-    #   master
     tags:
       - "v*.*.*"
 
 jobs:
-  build:
+  build_and_release_linux:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository code
@@ -26,28 +23,54 @@ jobs:
         run: go version
 
       - name: Install golang dependencies
-        run: |
-          go get .
+        run: make install_golang_deps
 
       - name: Install robotgo dependencies
-        run: |
-          make install_linux_deps
-        
-      - name: Build on linux
-        run: |
-          make build_linux
-          
-      - name: Cross-compile for Windows
-        run: |
-          make build_windows
+        run: make install_linux_deps
+
+      - name: Build Linux binary
+        run: make build_linux
+
+      - name: Build Windows binary
+        run: make build_windows
 
       - name: Release package
         uses: softprops/action-gh-release@v1
         if: startsWith(github.ref, 'refs/tags/')
         with:
           files: |
-            gorobot-build-test-linux
-            gorobot-build-test-windows.exe
-            LICENSE
+            robotgo-build-test-linux
+            robotgo-build-test-windows.exe
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  build_and_test_darwin:
+    runs-on: macos-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v3
+
+      - name: Setup Go environment
+        uses: actions/setup-go@v3
+        with:
+          go-version: '1.19'
+          check-latest: true
+          cache: true
+
+      - name: Check Go version
+        run: go version
+
+      - name: Install golang dependencies
+        run: make install_golang_deps
+
+      - name: Build Darwin binary
+        run: make build_darwin
+
+      - name: Release package
+        uses: softprops/action-gh-release@v1
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          files: |
+            robotgo-build-test-darwin
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

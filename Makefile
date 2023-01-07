@@ -5,7 +5,7 @@ clean:
 	./scripts/build_clean.sh
 
 install_golang_deps:
-	go get -u . && go mod tidy
+	go get .
 
 install_linux_deps:
 	./scripts/install_linux_deps.sh
