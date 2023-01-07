@@ -3,7 +3,7 @@
 
 BINARY_PREFIX="robotgo-build-test"
 MAJOR="2"
-MINOR="1"
+MINOR="2"
 PATCH="0"
 PROJECT_VERSION="v$MAJOR.$MINOR.$PATCH"
 COMMIT_HASH=$(git rev-parse HEAD)
