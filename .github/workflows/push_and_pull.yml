@@ -3,7 +3,7 @@ name: Push and Pull
 on:
   push:
     branches:
-      - "main"
+      - "master"
 
 jobs:
   build_and_test_linux:
