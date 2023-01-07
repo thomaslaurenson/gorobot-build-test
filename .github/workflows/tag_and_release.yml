@@ -39,8 +39,8 @@ jobs:
         if: startsWith(github.ref, 'refs/tags/')
         with:
           files: |
-            robotgo-build-test-linux
-            robotgo-build-test-windows.exe
+            bin/robotgo-build-test-linux
+            bin/robotgo-build-test-windows.exe
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -71,6 +71,6 @@ jobs:
         if: startsWith(github.ref, 'refs/tags/')
         with:
           files: |
-            robotgo-build-test-darwin
+            bin/robotgo-build-test-darwin
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
